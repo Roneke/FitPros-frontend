@@ -1,12 +1,15 @@
 import React from "react";
+import axios from "axios";
 // import React, { useState } from "react";
 
 export function EventNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.OnCreateEvent(params);
-    event.target.reset();
+    axios.post("http://localhost:3000/events.json", params).then((response) => {
+      console.log(response.data);
+      event.target.reset();
+    });
   };
   return (
     <div className="flex items-center justify-center p-12">
@@ -33,6 +36,7 @@ export function EventNew(props) {
             <div className="mb-5">
               <label>
                 <select
+                  name="sport"
                   id="category"
                   className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 >
@@ -143,14 +147,17 @@ export function EventNew(props) {
               </label>
               <input
                 type="text"
-                name="text"
+                name="details"
                 id="text"
                 placeholder="Enter addtional details"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
             <div>
-              <button className="hover:shadow-form w-full rounded-md bg-emerald-500 py-3 px-8 text-center text-base font-semibold text-white outline-none">
+              <button
+                type="submit"
+                className="hover:shadow-form w-full rounded-md bg-emerald-500 py-3 px-8 text-center text-base font-semibold text-white outline-none"
+              >
                 Create Event
               </button>
             </div>
