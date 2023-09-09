@@ -2,7 +2,7 @@ import * as React from "react";
 import Map from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 export function Main() {
   const [viewState, setViewState] = useState({

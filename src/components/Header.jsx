@@ -20,12 +20,13 @@ export default function Header() {
             Home
           </Link>
 
-          <a
+          <Link
             class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-800"
-            href="#"
+            Link
+            to="/showpage"
           >
             Search Events
-          </a>
+          </Link>
 
           <Link
             class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-800"
