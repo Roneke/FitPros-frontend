@@ -8,3 +8,14 @@ html {
 .signup-btn{
   z-index: 10;
 }
+
+.mapContainer {
+  margin-top: 100px;
+  
+  margin: 0 auto;
+
+  width: 100px;
+  height: 525px;
+}
+
+  

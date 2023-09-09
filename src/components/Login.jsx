@@ -23,7 +23,7 @@ export default function Login() {
           "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/";
+        window.location.href = "/home";
       })
       .catch((error) => {
         console.log(error.response);

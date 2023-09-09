@@ -34,18 +34,19 @@ export default function Header() {
           >
             Create
           </Link>
-          <a
+          <Link
             class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-800"
-            href="#"
+            Link
+            to="/profile"
           >
             My Profile
-          </a>
-          <a
+          </Link>
+          <Link
             class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-800"
             href="#"
           >
             Logout{" "}
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

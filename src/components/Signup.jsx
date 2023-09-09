@@ -14,7 +14,7 @@ export default function Signup() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/";
+        window.location.href = "/fitpros";
       })
       .catch((error) => {
         console.log(error.response.data.errors);
