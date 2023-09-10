@@ -31,7 +31,7 @@ html {
 .cardtitle{
   text-decoration: underline;
 }
-.date{
+/* .date{
   font-size:1.4em;
   font-weight:400;
   color:#fff;
@@ -86,7 +86,7 @@ html {
 }
 .righty{
       width: 100%;
-}
+} */
 
   .marker-btn{
     background: none;
@@ -97,4 +97,5 @@ html {
 .marker-btn img{
 width: 20px;
 height: 20px;
+
 }

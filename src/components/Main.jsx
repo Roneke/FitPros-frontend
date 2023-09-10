@@ -1,5 +1,10 @@
 import * as React from "react";
-import ReactMapGL, { Marker, Popup, GeolocateControl } from "react-map-gl";
+import ReactMapGL, {
+  Marker,
+  Popup,
+  GeolocateControl,
+  NavigationControl,
+} from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState, useEffect } from "react";
 import { Box } from "@mui/system";
@@ -9,7 +14,7 @@ import axios from "axios";
 
 export function Main() {
   const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectEvent] = useState([]);
+  const [popupInfo, setPopupInfo] = useState(null);
 
   const [viewState, setViewState] = useState({
     longitude: -73.996699,
@@ -25,8 +30,8 @@ export function Main() {
   };
   useEffect(handleIndexEvents, []);
   return (
-    <Box sx={{ width: "100vw", height: "100vh", display: "relatiive" }}>
-      <div className="mapContainer" style={{ width: "100vw", height: "100vh" }}>
+    <Box sx={{ width: "100vw", height: "80vh", display: "relatiive" }}>
+      <div className="mapContainer" style={{ width: "100vw", height: "80vh" }}>
         <h1>Search Events</h1>
         <p className="event">Check Out Events Happening in your city</p>
         <ReactMapGL
@@ -43,31 +48,31 @@ export function Main() {
               key={event.id}
               latitude={event.latitude}
               longitude={event.longtitude}
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                setPopupInfo(event);
+              }}
             >
-              <button
-                className="marker-btn"
-                onClick={(e) => {
-                  e.preventDefault;
-                  selectedEvent(event);
-                }}
-              >
-                <img src="src/assets/icons8-place-marker-50.png" alt="icon" />
+              <button className="marker-btn">
+                <img src="src/assets/Map-Marker.png" alt="icon" />
               </button>
             </Marker>
           ))}
-          {/* {selectEvent ? (
-            <Popup 
-            tipSize={5}
-             anchor="top"
-            latitude ={selectEvent.latitude[0]} longitude = {selectEvent.longitude[0]}
-            onClose ={() => setSelectEvent(null)}}
+          {popupInfo && (
+            <Popup
+              anchor="top"
+              latitude={popupInfo.latitude}
+              longitude={popupInfo.longtitude}
+              onClose={() => setPopupInfo(null)}
             >
-            <div>
-              <h2>{selectEvent.event.name}</h2>
-            </div>
+              <div>
+                <h2>{popupInfo.name}</h2>
+                <img src={popupInfo.image} />
+              </div>
             </Popup>
-            ):null} */}
+          )}
           <GeolocateControl></GeolocateControl>
+          <NavigationControl />
         </ReactMapGL>
       </div>
     </Box>
