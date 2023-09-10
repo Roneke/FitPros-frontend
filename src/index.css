@@ -9,13 +9,92 @@ html {
   z-index: 10;
 }
 
-.mapContainer {
+/* .mapContainer {
   margin-top: 100px;
   
   margin: 0 auto;
 
   width: 100px;
   height: 525px;
+} */
+
+
+.card{
+  margin: 1em;
+  border: 2px solid white;
+  
+}
+.cardheading{
+  vertical-align: super;
+  
+}
+.cardtitle{
+  text-decoration: underline;
+}
+.date{
+  font-size:1.4em;
+  font-weight:400;
+  color:#fff;
+	padding-bottom: 0.3em;
+}
+.date-ribbon{
+  
+  top:0.5em;
+  right: 0px;
+  position:absolute;
+ 
+  padding-bottom:0.5em;
+  border-radius:0;
+ 
+	color: black;
+  width: 5em;
+  text-align: center;
+}
+ .date-ribbon h2{
+  text-align: center;
+   padding-top: 0.25em;
+     -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;
+   font-family: 'DM Serif Display', serif;
+   font-size: 1.25rem;
+   letter-spacing: 8px;
+   padding-left: 10px;
+   
+}
+ .date-ribbon h1{
+   font-size: 1.75rem;
+ text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: white;
+   font-family: 'DM Serif Display', serif;
+   letter-spacing: 3px;
+    
+}
+.lefting{
+  position:relative;
+}
+.imagine{
+    object-fit: cover;
+    display: inline-block;
+    min-height: 100%;
+    max-height: 100%;
+}
+.tickets{
+  bottom:0px;
+  right: 0px;
+  position: absolute;
+}
+.righty{
+      width: 100%;
 }
 
-  
+  .marker-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.marker-btn img{
+width: 20px;
+height: 20px;
+}
