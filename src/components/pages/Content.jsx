@@ -4,8 +4,8 @@ import { EventIndex } from "./EventIndex";
 import Login from "../Login";
 import { Routes, Route } from "react-router-dom";
 import { Main } from "../Main";
-import Profile from "./Profile";
-import { LogoutLink } from "./LogoutLink";
+import { Updateprofile } from "./Updateprofile";
+// import { LogoutLink } from "./LogoutLink";
 
 export function Content() {
   return (
@@ -16,7 +16,7 @@ export function Content() {
         <Route path="/event" element={<EventNew />} />
         <Route path="/showpage" element={<EventIndex />} />
         <Route path="/home" element={<Main />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Updateprofile />} />
       </Routes>
     </div>
   );

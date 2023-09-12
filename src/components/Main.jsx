@@ -32,14 +32,17 @@ export function Main() {
   return (
     <Box sx={{ width: "100vw", height: "80vh", display: "relatiive" }}>
       <div className="mapContainer" style={{ width: "100vw", height: "80vh" }}>
-        <h1>Search Events</h1>
-        <p className="event">Check Out Events Happening in your city</p>
+        <h1 className="event text-center font-extrabold  text-fuchsia-600 ">
+          Check Out Events Happening in your city
+        </h1>
         <ReactMapGL
           {...viewState}
-          mapboxAccessToken=""
+          mapboxAccessToken="
+          "
           width="100%"
           height="100%"
           onViewportChange={(viewState) => setViewState(viewState)}
+          onMove={(evt) => setViewState(evt.viewState)}
           // transitionDuration="200"
           mapStyle="mapbox://styles/mapbox/streets-v9"
         >
@@ -54,19 +57,22 @@ export function Main() {
               }}
             >
               <button className="marker-btn">
-                <img src="src/assets/Map-Marker.png" alt="icon" />
+                <img src="src/assets/map_pin.png" alt="icon" />
               </button>
             </Marker>
           ))}
           {popupInfo && (
             <Popup
+              tip={3}
               anchor="top"
               latitude={popupInfo.latitude}
               longitude={popupInfo.longtitude}
               onClose={() => setPopupInfo(null)}
             >
               <div>
-                <h2>{popupInfo.name}</h2>
+                <h2 className="text-center text-fuchsia-600 font-extrabold">
+                  {popupInfo.name}
+                </h2>
                 <img src={popupInfo.image} />
               </div>
             </Popup>
