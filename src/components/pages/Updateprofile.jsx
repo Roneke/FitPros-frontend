@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Modal from "./Modal.jsx";
 
 export function Updateprofile() {
   const [user, setUser] = useState({});
-  // const[isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const params = new FormData(event.target);
-  // axios.patch("http://localhost:3000/users.json", params).then((response) => {
+  const updateUserProfile = () => {
+    const updatedUserData = {};
+
+    axios
+      .patch("http://localhost:3000/current_user.json", updatedUserData)
+      .then((response) => {
+        console.log("Profile updated successfully:", response.data);
+        closeModal(); // Close the modal after successful update
+        // You may want to refresh the user's data by making another GET request here
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
+  };
+
+  // axios.patch("http://localhost:3000/current_user.json", params).then((response) => {
   //   console.log(response.data);
   //   event.target.reset();
   //   window.location.href = "/"; s
@@ -18,11 +33,16 @@ export function Updateprofile() {
     });
   };
   useEffect(handleShowUser, []);
-  /// function to open modal
-  // const openModal = () => {setIsModalOpen(true)};
+  //function to open modal
+  const openModal = () => {
+    setIsModalOpen(true);
+    console.log("testing");
+  };
 
-  // /// function to close modal
-  // const closeModal = () => {setIsModalOpen(false)};
+  /// function to close modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <section>
@@ -71,7 +91,10 @@ export function Updateprofile() {
             </div>
             <div class="w-full xl:w-2/3 flex-col md:flex-row justify-center xl:justify-end flex md:pl-6">
               <div class="flex items-center justify-center xl:justify-start mt-1 md:mt-0 mb-5 md:mb-0"></div>
-              <button class="focus:outline-none ml-0 md:ml-5 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-3 md:px-6 py-2 text-sm">
+              <button
+                class="focus:outline-none ml-0 md:ml-5 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-3 md:px-6 py-2 text-sm"
+                onClick={() => openModal()}
+              >
                 Edit
               </button>
             </div>
@@ -94,6 +117,60 @@ export function Updateprofile() {
           <span className="font-medium">Description:</span>
         </p>
       </div>
+      <Modal show={isModalOpen} onClose={closeModal}>
+        <div>
+          <h2 class="text-xl text-gray-600 dark:text-gray-300 pb-2">
+            Update Account
+          </h2>
+          <div>
+            <label htmlFor="inputField text-gray-600 dark:text-gray-400">
+              Industry
+            </label>
+            <input
+              className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+              type="text"
+              id="inputField"
+            />
+            <div>
+              <label htmlFor="inputField ext-gray-600 dark:text-gray-400">
+                JobTitle
+              </label>
+              <input
+                className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                type="text"
+                id="inputField"
+              />
+            </div>
+            <div>
+              <label htmlFor="inputField ext-gray-600 dark:text-gray-400">
+                Location
+              </label>
+              <input
+                className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                type="text"
+                id="inputField"
+              />
+              <label htmlFor="inputField ext-gray-600 dark:text-gray-400">
+                Bio
+              </label>
+              <input
+                className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow dark:bg-gray-600 dark:text-gray-100"
+                type="text"
+                id="inputField"
+              />
+              <button
+                onClick={() => updateUserProfile()}
+                data-modal-target="small-modal"
+                data-modal-toggle="small-modal"
+                class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }

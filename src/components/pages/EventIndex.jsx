@@ -70,41 +70,43 @@ export function EventIndex() {
   const renderEvents = () => {
     return eventsToRender?.map((event) => {
       return (
-        <div className="grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-10 md:px-20">
           <div
             key={event.id}
             className="card
-          border w-1/3 p-4 rounded-md shadow-lg mb-4 bg-gray-800 "
+            p-2 rounded-md shadow-md  bg-gray-800 "
           >
-            <img
-              src={event.image}
-              className="card-img-top w-full"
-              alt="Card image cap"
-            />
-            <h2 className="text-gray-100 mb-4 text-center uppercase tracking-wide text-lg text-600 font-bold cardheading">
-              {event.name}
-            </h2>
-            <p className="text-gray-100 mb-1 text-sm">
-              <span className="text-gray-100  text-sm text-600 font-bold">
-                Date:
-              </span>
-              {event.friendly_date}
-            </p>
-            <p className="text-gray-100 mb-1 text-sm">
+            <div class="relative">
+              <img
+                src={event.image}
+                className="card-img-top w-full  object-cover"
+                alt="Card image cap"
+              />
+              <h2 className="text-gray-100 mb-4 text-center uppercase tracking-wide text-lg text-600 font-bold cardheading">
+                {event.name}
+              </h2>
+              <p className="text-gray-100 mb-1 text-sm">
+                <span className="text-gray-100  text-sm text-600 font-bold">
+                  Datetime:
+                </span>
+                {event.friendly_date}
+              </p>
+              {/* <p className="text-gray-100 mb-1 text-sm">
               <span className="font-medium text-gray-100">Time:</span>{" "}
               {event.time}
-            </p>
-            <p className="mb-1 text-gray-100">
-              <span className="font-medium text-gray-100">Location:</span>{" "}
-              {event.address} {event.city}, {event.state} {event.zipcode}
-            </p>
-            <p className="text-gray-100 mb-1">
-              <span className="font-medium text-gray-100">Details:</span>{" "}
-              {event.details}
-            </p>
-            <button className="bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4 ">
-              JOIN
-            </button>
+            </p> */}
+              <p className="mb-1 text-gray-100">
+                <span className="font-medium text-gray-100">Location:</span>{" "}
+                {event.address} {event.city}, {event.state} {event.zipcode}
+              </p>
+              <p className="text-gray-100 mb-1">
+                <span className="font-medium text-gray-100">Details:</span>{" "}
+                {event.details}
+              </p>
+              <button className="bg-transparent uppercase  hover:bg-red-500 text-gray-100 font-semibold hover:text-black py-2 px-4 border-2 border-red-500 hover:border-transparent mb-2 mr-4 float-right">
+                JOIN
+              </button>
+            </div>
           </div>
         </div>
       );
@@ -113,7 +115,9 @@ export function EventIndex() {
 
   return (
     <div>
-      <h1 className="heading text-center font-extrabold">All Events</h1>
+      <h1 className="heading text-center font-extrabold text-emerald-500 text-2xl">
+        All Events
+      </h1>
       {searchBar()}
       {renderEvents()}
       <div></div>

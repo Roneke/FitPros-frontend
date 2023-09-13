@@ -49,6 +49,13 @@ export function EventNew(props) {
                   <option selected="">Soccer</option>
                   <option selected="">Baseball</option>
                   <option selected="">Hiking</option>
+                  <option selected="">Volleyball</option>
+                  <option selected="">Surfing</option>
+                  <option selected="">Skateboarding</option>
+                  <option selected="">Rock Climbing</option>
+                  <option selected="">Golf</option>
+                  <option selected="">Swimming</option>
+                  <option selected="">Flag Football</option>
                 </select>
               </label>
             </div>
